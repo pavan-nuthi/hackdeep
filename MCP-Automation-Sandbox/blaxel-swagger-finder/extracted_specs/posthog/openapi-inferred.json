@@ -1,0 +1,803 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PostHog API",
+    "version": "1.0.0",
+    "description": "API specification for PostHog application routes."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com"
+    }
+  ],
+  "paths": {
+    "/{entrypoint}": {
+      "get": {
+        "summary": "Retrieve information for a given entrypoint.",
+        "description": "",
+        "operationId": "entrypoint_get",
+        "parameters": [
+          {
+            "name": "entrypoint",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/oauth2/callback": {
+      "get": {
+        "summary": "Handle OAuth2 callback for admin authentication.",
+        "description": "",
+        "operationId": "admin_oauth2_callback_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/oauth2/success": {
+      "get": {
+        "summary": "Indicate successful OAuth2 authentication for admin.",
+        "description": "",
+        "operationId": "admin_oauth2_success_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/auth_check": {
+      "get": {
+        "summary": "Perform an authentication check for admin access.",
+        "description": "",
+        "operationId": "admin_auth_check_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/redisvalues": {
+      "get": {
+        "summary": "Retrieve Redis values for administrative purposes.",
+        "description": "",
+        "operationId": "admin_redisvalues_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/redis/edit-ttl": {
+      "get": {
+        "summary": "Edit TTL (Time-To-Live) for Redis keys.",
+        "description": "",
+        "operationId": "admin_redis_edit_ttl_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/apikeysearch": {
+      "get": {
+        "summary": "Search for API keys in the admin interface.",
+        "description": "",
+        "operationId": "admin_apikeysearch_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/realtime-cohorts-calculation": {
+      "get": {
+        "summary": "Analyze real-time cohort calculation status.",
+        "description": "",
+        "operationId": "admin_realtime_cohorts_calculation_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/radar-bypass": {
+      "get": {
+        "summary": "View Radar bypass settings in the admin interface.",
+        "description": "",
+        "operationId": "admin_radar_bypass_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/admin/radar-bypass": {
+      "get": {
+        "summary": "List Radar bypass entries via API.",
+        "description": "",
+        "operationId": "api_admin_radar_bypass_list_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/admin/radar-bypass/{email}": {
+      "get": {
+        "summary": "Retrieve a specific Radar bypass entry by email via API.",
+        "description": "",
+        "operationId": "api_admin_radar_bypass_detail_get",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/email-mfa-bypass": {
+      "get": {
+        "summary": "View email MFA bypass settings in the admin interface.",
+        "description": "",
+        "operationId": "admin_email_mfa_bypass_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/admin/email-mfa-bypass": {
+      "get": {
+        "summary": "List email MFA bypass entries via API.",
+        "description": "",
+        "operationId": "api_admin_email_mfa_bypass_list_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/admin/email-mfa-bypass/{email}": {
+      "get": {
+        "summary": "Retrieve a specific email MFA bypass entry by email via API.",
+        "description": "",
+        "operationId": "api_admin_email_mfa_bypass_detail_get",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/resave-cohorts": {
+      "get": {
+        "summary": "Trigger a resave operation for cohorts.",
+        "description": "",
+        "operationId": "admin_resave_cohorts_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/backfill-precalculated-person-properties": {
+      "get": {
+        "summary": "Trigger backfill for precalculated person properties.",
+        "description": "",
+        "operationId": "admin_backfill_precalculated_person_properties_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/distinct-id-usage": {
+      "get": {
+        "summary": "View distinct ID usage statistics.",
+        "description": "",
+        "operationId": "admin_distinct_id_usage_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/tophog": {
+      "get": {
+        "summary": "Access the Tophog dashboard.",
+        "description": "",
+        "operationId": "admin_tophog_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/health-checks": {
+      "get": {
+        "summary": "List available health checks.",
+        "description": "",
+        "operationId": "admin_health_checks_list_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/health-checks/{kind}": {
+      "get": {
+        "summary": "Trigger a specific health check by kind.",
+        "description": "",
+        "operationId": "admin_health_checks_trigger_get",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/health-checks/{kind}/runs": {
+      "get": {
+        "summary": "View runs for a specific health check kind.",
+        "description": "",
+        "operationId": "admin_health_checks_runs_get",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/logout": {
+      "get": {
+        "summary": "Log out from an impersonated session.",
+        "description": "",
+        "operationId": "admin_logout_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/login/user/{user_id}": {
+      "get": {
+        "summary": "Log in as a specific user (impersonation).",
+        "description": "",
+        "operationId": "admin_login_user_get",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin/impersonation/upgrade": {
+      "get": {
+        "summary": "Upgrade an impersonation session.",
+        "description": "",
+        "operationId": "admin_impersonation_upgrade_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/admin": {
+      "get": {
+        "summary": "Access the main admin interface.",
+        "description": "",
+        "operationId": "admin_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/saml/metadata": {
+      "get": {
+        "summary": "Retrieve SAML metadata.",
+        "description": "",
+        "operationId": "api_saml_metadata_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/sentry_stats": {
+      "get": {
+        "summary": "Retrieve Sentry statistics.",
+        "description": "",
+        "operationId": "api_sentry_stats_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/max/chat": {
+      "get": {
+        "summary": "Access Max chat functionality.",
+        "description": "",
+        "operationId": "max_chat_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/webhooks/vercel": {
+      "get": {
+        "summary": "Handle Vercel webhooks.",
+        "description": "",
+        "operationId": "webhooks_vercel_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/Users": {
+      "get": {
+        "summary": "List SCIM users for a specific domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_users_list_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/Users/{user_id}": {
+      "get": {
+        "summary": "Retrieve a specific SCIM user by ID for a domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_users_detail_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/Groups": {
+      "get": {
+        "summary": "List SCIM groups for a specific domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_groups_list_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/Groups/{group_id}": {
+      "get": {
+        "summary": "Retrieve a specific SCIM group by ID for a domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_groups_detail_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/ServiceProviderConfig": {
+      "get": {
+        "summary": "Retrieve SCIM Service Provider Configuration for a domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_service_provider_config_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/ResourceTypes": {
+      "get": {
+        "summary": "List SCIM Resource Types for a domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_resource_types_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scim/v2/{domain_id}/Schemas": {
+      "get": {
+        "summary": "List SCIM Schemas for a domain.",
+        "description": "",
+        "operationId": "scim_v2_domain_schemas_get",
+        "parameters": [
+          {
+            "name": "domain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/health": {
+      "get": {
+        "summary": "Check health status of Agentic Provisioning.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_health_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/services": {
+      "get": {
+        "summary": "List available Agentic Provisioning services.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_services_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/account_requests": {
+      "get": {
+        "summary": "List Agentic Provisioning account requests.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_account_requests_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/authorize": {
+      "get": {
+        "summary": "Initiate Agentic authorization process.",
+        "description": "",
+        "operationId": "api_agentic_authorize_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/authorize/confirm": {
+      "get": {
+        "summary": "Confirm Agentic authorization.",
+        "description": "",
+        "operationId": "api_agentic_authorize_confirm_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/oauth/token": {
+      "get": {
+        "summary": "Obtain an OAuth token for Agentic Provisioning.",
+        "description": "",
+        "operationId": "api_agentic_oauth_token_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/resources": {
+      "get": {
+        "summary": "List Agentic Provisioning resources.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_resources_list_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/resources/{resource_id}/rotate_credentials": {
+      "get": {
+        "summary": "Rotate credentials for an Agentic Provisioning resource.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_resources_rotate_credentials_get",
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/resources/{resource_id}": {
+      "get": {
+        "summary": "Retrieve details for an Agentic Provisioning resource.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_resources_detail_get",
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/agentic/provisioning/deep_links": {
+      "get": {
+        "summary": "List Agentic Provisioning deep links.",
+        "description": "",
+        "operationId": "api_agentic_provisioning_deep_links_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/agentic/login": {
+      "get": {
+        "summary": "Initiate Agentic login process.",
+        "description": "",
+        "operationId": "agentic_login_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/oauth/authorize": {
+      "get": {
+        "summary": "Authorize an OAuth client.",
+        "description": "",
+        "operationId": "oauth_authorize_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/oauth/token": {
+      "get": {
+        "summary": "Request an OAuth token.",
+        "description": "",
+        "operationId": "oauth_token_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

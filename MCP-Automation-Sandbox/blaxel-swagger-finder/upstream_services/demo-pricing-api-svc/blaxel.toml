@@ -1,0 +1,14 @@
+name = "demo-pricing-api-svc"
+type = "function"
+
+[entrypoint]
+prod = ".venv/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 80"
+dev = "uvicorn main:app --host 0.0.0.0 --port 8080"
+
+[[triggers]]
+id = "trigger-demo-pricing-api-svc"
+type = "http"
+
+[triggers.configuration]
+path = "functions/demo-pricing-api-svc"
+authenticationType = "public"

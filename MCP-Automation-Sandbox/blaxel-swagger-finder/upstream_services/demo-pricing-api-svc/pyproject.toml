@@ -1,0 +1,9 @@
+[project]
+name = "demo-pricing-api-svc"
+version = "0.1.0"
+description = "Upstream API service for demo-pricing-api"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn==0.34.0",
+]

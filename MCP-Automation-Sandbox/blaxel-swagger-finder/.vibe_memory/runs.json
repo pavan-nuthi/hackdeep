@@ -1,0 +1,114 @@
+[
+  {
+    "id": "5ecaec53",
+    "repo_url": "https://github.com/swagger-api/swagger-petstore",
+    "started_at": 1774637133.992744,
+    "completed_at": 0.0,
+    "bugs_found": 25,
+    "bugs_critical": 0,
+    "flows_tested": 21,
+    "total_runtime_ms": 59868,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 1
+  },
+  {
+    "id": "43555bc4",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774641094.3072362,
+    "completed_at": 0.0,
+    "bugs_found": 63,
+    "bugs_critical": 0,
+    "flows_tested": 59,
+    "total_runtime_ms": 208127,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 3
+  },
+  {
+    "id": "f02fed9b",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774641724.390612,
+    "completed_at": 0.0,
+    "bugs_found": 63,
+    "bugs_critical": 0,
+    "flows_tested": 59,
+    "total_runtime_ms": 221123,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 3
+  },
+  {
+    "id": "5443eb6d",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774641823.631755,
+    "completed_at": 0.0,
+    "bugs_found": 67,
+    "bugs_critical": 0,
+    "flows_tested": 65,
+    "total_runtime_ms": 222574,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 3
+  },
+  {
+    "id": "5246aba9",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774643506.5862908,
+    "completed_at": 0.0,
+    "bugs_found": 42,
+    "bugs_critical": 0,
+    "flows_tested": 42,
+    "total_runtime_ms": 157366,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 2
+  },
+  {
+    "id": "4cdfc527",
+    "repo_url": "https://github.com/posthog/posthog",
+    "started_at": 1774648193.920596,
+    "completed_at": 0.0,
+    "bugs_found": 0,
+    "bugs_critical": 0,
+    "flows_tested": 17,
+    "total_runtime_ms": 52082,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 1
+  },
+  {
+    "id": "20aa962b",
+    "repo_url": "https://github.com/PostHog/posthog-js",
+    "started_at": 1774648438.718972,
+    "completed_at": 0.0,
+    "bugs_found": 0,
+    "bugs_critical": 0,
+    "flows_tested": 21,
+    "total_runtime_ms": 47892,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 1
+  }
+]

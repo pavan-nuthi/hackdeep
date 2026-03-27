@@ -1,0 +1,10 @@
+blaxel
+requests
+streamlit
+watchdog
+httpx
+pyyaml
+pydantic
+python-dotenv
+fastapi
+uvicorn

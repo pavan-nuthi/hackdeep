@@ -1,0 +1,155 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Weather API",
+    "version": "2.0.0",
+    "description": "A simple weather forecast API."
+  },
+  "servers": [
+    {
+      "url": "https://weather.example.com/api/v2"
+    }
+  ],
+  "paths": {
+    "/forecast": {
+      "get": {
+        "operationId": "getForecast",
+        "summary": "Get weather forecast for a location",
+        "tags": ["weather"],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "City name",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "description": "Number of forecast days (1-7)",
+            "schema": { "type": "integer", "default": 3 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forecast data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "city": { "type": "string" },
+                    "days": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/DayForecast" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/current": {
+      "get": {
+        "operationId": "getCurrentWeather",
+        "summary": "Get current weather conditions",
+        "tags": ["weather"],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "required": true,
+            "description": "City name",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current conditions",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CurrentWeather" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/alerts": {
+      "get": {
+        "operationId": "getAlerts",
+        "summary": "Get active weather alerts for a region",
+        "tags": ["alerts"],
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": true,
+            "description": "Region code",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Active alerts"
+          }
+        }
+      }
+    },
+    "/alerts/subscribe": {
+      "post": {
+        "operationId": "subscribeToAlerts",
+        "summary": "Subscribe to weather alerts for a region",
+        "tags": ["alerts"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["region", "email"],
+                "properties": {
+                  "region": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "severity_filter": { "type": "string", "enum": ["all", "severe", "extreme"] }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Subscription created"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DayForecast": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "high_temp": { "type": "number" },
+          "low_temp": { "type": "number" },
+          "condition": { "type": "string" },
+          "precipitation_chance": { "type": "integer" }
+        }
+      },
+      "CurrentWeather": {
+        "type": "object",
+        "properties": {
+          "temp": { "type": "number" },
+          "feels_like": { "type": "number" },
+          "humidity": { "type": "integer" },
+          "condition": { "type": "string" },
+          "wind_speed": { "type": "number" }
+        }
+      }
+    }
+  }
+}

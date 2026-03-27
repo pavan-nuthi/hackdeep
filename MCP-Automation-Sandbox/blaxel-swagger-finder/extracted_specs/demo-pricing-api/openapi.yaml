@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: Demo Pricing API
+  description: Minimal API that returns a base price. Dummy target for an AI agent.
+  version: 0.0.1
+
+servers:
+  - url: http://127.0.0.1:8000
+    description: Local dev server
+
+paths:
+  /price:
+    get:
+      operationId: get_price
+      summary: Get base price
+      description: Returns the current base price (fixed value).
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PriceResponse"
+
+components:
+  schemas:
+    PriceResponse:
+      type: object
+      required:
+        - price
+      properties:
+        price:
+          type: number
+          example: 100
+          description: Base price value

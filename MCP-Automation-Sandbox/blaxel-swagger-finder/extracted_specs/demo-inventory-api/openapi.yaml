@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Demo Inventory API
+  description: Minimal API that returns a list of items. Dummy target for an AI agent.
+  version: 0.0.1
+
+servers:
+  - url: http://127.0.0.1:8001
+    description: Local dev server
+
+paths:
+  /items:
+    get:
+      operationId: get_items
+      summary: Get items
+      description: Returns a minimal list of items.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemsResponse"
+
+components:
+  schemas:
+    ItemsResponse:
+      type: object
+      required:
+        - items
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string

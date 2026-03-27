@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 12%;
+
+    --primary: 260 60% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 220 15% 30%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 260 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 260 60% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 10% 40%;
+    --sidebar-primary: 260 60% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 50% 97%;
+    --sidebar-accent-foreground: 260 60% 35%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 260 60% 50%;
+
+    /* Custom tokens */
+    --glow: 260 60% 50%;
+    --success: 150 60% 40%;
+    --warning: 40 90% 50%;
+    --surface: 220 14% 96%;
+    --surface-hover: 220 14% 93%;
+    --gradient-primary: linear-gradient(135deg, hsl(260, 60%, 50%), hsl(280, 55%, 55%));
+    --shadow-glow: 0 4px 14px hsl(260 60% 50% / 0.08);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    @apply tracking-tight;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(260, 60%, 50%), hsl(280, 55%, 55%));
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(220 13% 90%), 0 4px 14px hsl(260 60% 50% / 0.06);
+  }
+
+  .surface-glow {
+    background: radial-gradient(ellipse at top, hsl(260 60% 50% / 0.03) 0%, transparent 60%);
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PostHog JS API",
+    "version": "1.0.0",
+    "description": "API for PostHog JS application routes, including CSP violation playgrounds, compliance adapters, and example applications."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Various entry points for playgrounds and examples",
+        "description": "This endpoint serves as a general entry point for different demo applications and examples. It can return HTML pages for CSP violation playgrounds, feature flag demos, session recording demos, or JSON responses for Node.js/Hono examples (e.g., a greeting or an exception capture confirmation).",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/inline-script": {
+      "get": {
+        "summary": "CSP Inline Script Violation Page",
+        "description": "Displays a page designed to trigger an inline script Content Security Policy (CSP) violation.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/external-script": {
+      "get": {
+        "summary": "CSP External Script Violation Page",
+        "description": "Displays a page designed to trigger an external script Content Security Policy (CSP) violation.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/external-img": {
+      "get": {
+        "summary": "CSP External Image Violation Page",
+        "description": "Displays a page designed to trigger an external image Content Security Policy (CSP) violation.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/external-style": {
+      "get": {
+        "summary": "CSP External Style Violation Page",
+        "description": "Displays a page designed to trigger an external style Content Security Policy (CSP) violation.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/xhr-violation": {
+      "get": {
+        "summary": "CSP XHR Violation Page",
+        "description": "Displays a page designed to trigger an XMLHttpRequest (XHR) Content Security Policy (CSP) violation with auto-executing JavaScript.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/eval": {
+      "get": {
+        "summary": "CSP Eval Violation Page",
+        "description": "Displays a page designed to trigger an `eval()` Content Security Policy (CSP) violation.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/debug-enabled": {
+      "get": {
+        "summary": "CSP Debug Enabled Test",
+        "description": "Tests Content Security Policy (CSP) reporting with debug mode enabled, adding `debug=true` to the report endpoint.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/debug-case-insensitive": {
+      "get": {
+        "summary": "CSP Debug Case-Insensitive Test",
+        "description": "Tests Content Security Policy (CSP) reporting with a case-insensitive debug parameter, adding `DEBUG=true` to the report endpoint.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/invalid-content-type": {
+      "get": {
+        "summary": "CSP Invalid Content Type Test",
+        "description": "Tests Content Security Policy (CSP) reporting with an invalid content type.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/report-uri-only": {
+      "get": {
+        "summary": "CSP Report-URI Only Test",
+        "description": "Tests Content Security Policy (CSP) reporting using only the `report-uri` directive.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/report-to-only": {
+      "get": {
+        "summary": "CSP Report-To Only Test",
+        "description": "Tests Content Security Policy (CSP) reporting using only the `report-to` directive.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/both-report-directives": {
+      "get": {
+        "summary": "CSP Both Report Directives Test",
+        "description": "Tests Content Security Policy (CSP) reporting using both `report-uri` and `report-to` directives.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/malformed-reporting-endpoints": {
+      "get": {
+        "summary": "CSP Malformed Reporting Endpoints Test",
+        "description": "Tests Content Security Policy (CSP) reporting with malformed reporting endpoints.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sampling-test/{path}": {
+      "get": {
+        "summary": "CSP Sampling Test",
+        "description": "Tests Content Security Policy (CSP) sampling with various URLs and domains. The `path` parameter is optional and defaults to 'default' if not provided.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "urls",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "random",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/segment.html": {
+      "get": {
+        "summary": "Segment Demo HTML Page",
+        "description": "Serves the `segment.html` demo page.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/static/recorder.js": {
+      "get": {
+        "summary": "RRWeb Recorder JavaScript File",
+        "description": "Serves the `rrweb.js` file, typically used for session recording.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/flags": {
+      "post": {
+        "summary": "Get Feature Flags and Session Recording Config",
+        "description": "Returns feature flags and session recording configuration, typically for a demo or testing environment.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Get SDK Adapter Health",
+        "description": "Checks the health of the PostHog SDK adapter (browser or Node.js) and returns information about the SDK and adapter versions.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/init": {
+      "post": {
+        "summary": "Initialize SDK Adapter",
+        "description": "Initializes the PostHog SDK adapter (browser or Node.js) with provided configuration and resets its internal state.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/capture": {
+      "post": {
+        "summary": "Capture an Event",
+        "description": "Captures an event using the initialized PostHog SDK adapter.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/flush": {
+      "post": {
+        "summary": "Flush Pending Events",
+        "description": "Flushes any pending events from the SDK adapter. The browser SDK uses internal timers, while the Node.js SDK has an explicit flush method.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/state": {
+      "get": {
+        "summary": "Get SDK Adapter State",
+        "description": "Retrieves the current state of the SDK adapter, including pending events, total captured/sent events, retries, and last error.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/reset": {
+      "post": {
+        "summary": "Reset SDK Adapter State",
+        "description": "Resets the internal state of the SDK adapter, clearing captured events, counters, and errors.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/unhandled-error": {
+      "get": {
+        "summary": "Trigger Unhandled Error",
+        "description": "Triggers an unhandled error in the Node.js example application to test error capturing.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/error": {
+      "get": {
+        "summary": "Trigger Handled Error",
+        "description": "Triggers a handled error and captures it as an exception using `posthog.captureException` in the Node.js example application.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/async_error": {
+      "get": {
+        "summary": "Trigger Async Error",
+        "description": "Triggers an autocaptured asynchronous error in the Hono example application.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/wait-for-local-evaluation-ready": {
+      "get": {
+        "summary": "Wait for Local Evaluation Ready",
+        "description": "Waits for local feature flag evaluation to be ready in the Node.js example application.",
+        "operationId": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/user/{userId}/action": {
+      "get": {
+        "summary": "Capture User Action",
+        "description": "Captures a 'user did action' event for a specific user in the Node.js example application.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/user/{userId}/flags/{flagId}": {
+      "get": {
+        "summary": "Get User Feature Flag",
+        "description": "Retrieves the value and payload of a specific feature flag for a given user in the Node.js example application.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "flagId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/user/{userId}/flags": {
+      "get": {
+        "summary": "Get All User Feature Flags",
+        "description": "Retrieves all feature flags and their payloads for a specific user in the Node.js example application.",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

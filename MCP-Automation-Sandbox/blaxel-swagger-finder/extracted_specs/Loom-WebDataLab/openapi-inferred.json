@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Loom-WebDataLab API",
+    "version": "1.0.0",
+    "description": "API for scraping web data, managing scraping sessions, and analyzing web graphs."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api/v1"
+    }
+  ],
+  "paths": {
+    "/preview": {
+      "get": {
+        "summary": "Get a preview of a URL with an interactive picker",
+        "description": "",
+        "operationId": "getPreview",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "get": {
+        "summary": "Get a list of all scraping sessions",
+        "description": "",
+        "operationId": "getSessions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new scraping session",
+        "description": "",
+        "operationId": "createSession",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}": {
+      "get": {
+        "summary": "Get a specific scraping session by ID",
+        "description": "",
+        "operationId": "getSessionById",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a scraping session by ID",
+        "description": "",
+        "operationId": "deleteSession",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/graph/pagerank": {
+      "post": {
+        "summary": "Calculate PageRank for a given URL and its linked pages",
+        "description": "",
+        "operationId": "calculatePageRank",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}/pages": {
+      "get": {
+        "summary": "Get all scraped pages for a specific session",
+        "description": "",
+        "operationId": "getPagesForSession",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new page entry for a session and scrape its content",
+        "description": "",
+        "operationId": "createPageAndScrape",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/pages/{page_id}": {
+      "get": {
+        "summary": "Get a specific scraped page by ID",
+        "description": "",
+        "operationId": "getPageById",
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a scraped page by ID",
+        "description": "",
+        "operationId": "deletePage",
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/scrape": {
+      "post": {
+        "summary": "Scrape data from a given URL using a CSS selector",
+        "description": "",
+        "operationId": "scrapeData",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}
