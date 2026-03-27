@@ -3,107 +3,19 @@
   "info": {
     "title": "Loom-WebDataLab API",
     "version": "1.0.0",
-    "description": "API for scraping web data, managing scraping sessions, and analyzing web graphs."
+    "description": "API for web data scraping, session management, and graph analysis."
   },
   "servers": [
     {
-      "url": "http://localhost:8000/api/v1"
+      "url": "http://localhost:8000"
     }
   ],
   "paths": {
-    "/preview": {
-      "get": {
-        "summary": "Get a preview of a URL with an interactive picker",
-        "description": "",
-        "operationId": "getPreview",
-        "parameters": [
-          {
-            "name": "url",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/sessions": {
-      "get": {
-        "summary": "Get a list of all scraping sessions",
-        "description": "",
-        "operationId": "getSessions",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
+    "/pagerank": {
       "post": {
-        "summary": "Create a new scraping session",
-        "description": "",
-        "operationId": "createSession",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/sessions/{session_id}": {
-      "get": {
-        "summary": "Get a specific scraping session by ID",
-        "description": "",
-        "operationId": "getSessionById",
-        "parameters": [
-          {
-            "name": "session_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete a scraping session by ID",
-        "description": "",
-        "operationId": "deleteSession",
-        "parameters": [
-          {
-            "name": "session_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/graph/pagerank": {
-      "post": {
-        "summary": "Calculate PageRank for a given URL and its linked pages",
-        "description": "",
-        "operationId": "calculatePageRank",
+        "summary": "Calculate PageRank for a URL",
+        "description": "Calculates PageRank for a given URL, exploring a specified number of hops and pages.",
+        "operationId": "graphPagerank",
         "parameters": [],
         "responses": {
           "200": {
@@ -114,8 +26,8 @@
     },
     "/sessions/{session_id}/pages": {
       "get": {
-        "summary": "Get all scraped pages for a specific session",
-        "description": "",
+        "summary": "Get all pages for a session",
+        "description": "Retrieves a list of all scraped pages associated with a specific session.",
         "operationId": "getPagesForSession",
         "parameters": [
           {
@@ -134,8 +46,8 @@
         }
       },
       "post": {
-        "summary": "Create a new page entry for a session and scrape its content",
-        "description": "",
+        "summary": "Create a page and trigger scraping for a session",
+        "description": "Adds a new page to a specified session and initiates the scraping process for it.",
         "operationId": "createPageAndScrape",
         "parameters": [
           {
@@ -156,9 +68,9 @@
     },
     "/pages/{page_id}": {
       "get": {
-        "summary": "Get a specific scraped page by ID",
-        "description": "",
-        "operationId": "getPageById",
+        "summary": "Get a specific page by ID",
+        "description": "Retrieves details of a single scraped page using its unique ID.",
+        "operationId": "getPage",
         "parameters": [
           {
             "name": "page_id",
@@ -176,8 +88,8 @@
         }
       },
       "delete": {
-        "summary": "Delete a scraped page by ID",
-        "description": "",
+        "summary": "Delete a specific page by ID",
+        "description": "Deletes a scraped page and its associated data using its unique ID.",
         "operationId": "deletePage",
         "parameters": [
           {
@@ -196,12 +108,98 @@
         }
       }
     },
-    "/scrape": {
+    "/": {
+      "get": {
+        "summary": "Preview rendered HTML of a URL",
+        "description": "Renders the HTML content of a given URL and returns it, potentially with injected tools.",
+        "operationId": "previewHtml",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
       "post": {
-        "summary": "Scrape data from a given URL using a CSS selector",
-        "description": "",
-        "operationId": "scrapeData",
+        "summary": "Scrape content from a URL",
+        "description": "Scrapes content from a specified URL using a CSS selector and associates it with a session.",
+        "operationId": "scrapeContent",
         "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "get": {
+        "summary": "Get all scraping sessions",
+        "description": "Retrieves a list of all scraping sessions, including summary statistics like page count and last scraped time.",
+        "operationId": "getSessions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new scraping session",
+        "description": "Creates a new session to organize scraped data.",
+        "operationId": "createSession",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}": {
+      "get": {
+        "summary": "Get a specific scraping session by ID",
+        "description": "Retrieves details of a single scraping session using its unique ID.",
+        "operationId": "getSession",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a specific scraping session by ID",
+        "description": "Deletes a scraping session and all associated pages and elements.",
+        "operationId": "deleteSession",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"

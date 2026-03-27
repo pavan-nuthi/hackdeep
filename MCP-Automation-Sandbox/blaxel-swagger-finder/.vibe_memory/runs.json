@@ -110,5 +110,53 @@
       "security_probe"
     ],
     "reasoning_rounds": 1
+  },
+  {
+    "id": "8faf4be0",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774650922.6562304,
+    "completed_at": 0.0,
+    "bugs_found": 63,
+    "bugs_critical": 0,
+    "flows_tested": 51,
+    "total_runtime_ms": 214643,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 3
+  },
+  {
+    "id": "734efa9b",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774651764.4386792,
+    "completed_at": 0.0,
+    "bugs_found": 0,
+    "bugs_critical": 0,
+    "flows_tested": 17,
+    "total_runtime_ms": 63828,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 1
+  },
+  {
+    "id": "e47dcb03",
+    "repo_url": "https://github.com/sAVItar02/Loom-WebDataLab",
+    "started_at": 1774652336.4230413,
+    "completed_at": 0.0,
+    "bugs_found": 0,
+    "bugs_critical": 0,
+    "flows_tested": 22,
+    "total_runtime_ms": 59541,
+    "agents_used": [
+      "happy_path",
+      "edge_case",
+      "security_probe"
+    ],
+    "reasoning_rounds": 1
   }
 ]

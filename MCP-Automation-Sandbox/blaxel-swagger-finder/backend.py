@@ -371,7 +371,9 @@ def _run_pipeline_sync(urls: list[str], auth_token: str = ""):
             # Map tools to their new local endpoints
             for t in orc_tools:
                 for srv in generated_servers:
-                    if t.server_name == srv["server_name"]:
+                    # Compare against both repo_name (original case) and
+                    # server_name (lowercased/hyphenated) to handle both forms
+                    if t.server_name in (srv["server_name"], srv["repo_name"]):
                         t.endpoint_url = srv["local_url"]
                         break
 
@@ -462,7 +464,7 @@ def _run_pipeline_sync(urls: list[str], auth_token: str = ""):
 
             yield _sse_event("user-test", "done", ut_items, {
                 "testResults": [],
-                "passed": qa_report.flows_tested - qa_report.total_bugs,
+                "passed": qa_report.flows_passed,
                 "total": qa_report.flows_tested,
                 "qaReport": {
                     "totalBugs": qa_report.total_bugs,

@@ -53,6 +53,7 @@ class QAReport:
     edge_case_failures: int = 0
     security_vulnerabilities: int = 0
     flows_tested: int = 0
+    flows_passed: int = 0
     total_runtime_ms: int = 0
     reasoning_rounds: int = 0
     bugs: list[dict] = field(default_factory=list)
@@ -315,6 +316,8 @@ Return ONLY valid JSON."""
             for agent_type, results in agent_results.items():
                 for r in results:
                     report.flows_tested += 1
+                    if r.passed:
+                        report.flows_passed += 1
                     for bug in r.bugs_found:
                         bug["round"] = round_num
                         report.bugs.append(bug)
@@ -377,10 +380,10 @@ Return ONLY valid JSON."""
             })
 
         logger.info(
-            "QA Report: %d bugs (%d critical), %d flows tested, %d rounds, %dms",
+            "QA Report: %d bugs (%d critical), %d/%d flows passed, %d rounds, %dms",
             report.total_bugs, report.critical_bugs,
-            report.flows_tested, report.reasoning_rounds,
-            report.total_runtime_ms,
+            report.flows_passed, report.flows_tested,
+            report.reasoning_rounds, report.total_runtime_ms,
         )
 
         return report
